@@ -3,5 +3,9 @@
 export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
 cd /Users/murali/kodi_innovations/pinterest_manager
 echo "--- $(date) ---" >> run.log
+
+# Recreate tmux session if it was killed
+/opt/homebrew/bin/tmux new-session -d -s pepperbowl -c /Users/murali/kodi_innovations/pinterest_manager 2>/dev/null || true
+
 git pull origin main >> run.log 2>&1
 /usr/bin/python3 daily_trends.py >> run.log 2>&1
